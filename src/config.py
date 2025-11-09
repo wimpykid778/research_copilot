@@ -15,12 +15,12 @@ AGENT_TYPE = "ChatAgent"
 IS_STREAMING = False
 
 # Output Configuration
-DEFAULT_OUTPUT_FILE = "mini_survey.txt"
+DEFAULT_OUTPUT_FILE = "outputs/mini_survey.txt"
 DEFAULT_DOWNLOAD_DIR = "pdfs_downloaded"
 
 # Logging Configuration
-LOG_FILE = "research_copilot.log"
+LOG_FILE = "logs/research_copilot.log"
 LOG_FORMAT = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
 
 # Observability Configuration
-TRACE_FILE = "trace.jsonl"  # Structured trace file for observability
+TRACE_FILE = "logs/trace.jsonl"  # Structured trace file for observability

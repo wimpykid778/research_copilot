@@ -40,28 +40,42 @@ All agent implementations are centralized in the `agents/` directory:
 - **synthesizer_agent.py**: Synthesizes insights and research gaps across all summaries.
 - **survey_writer_agent.py**: Generates a concise mini-survey with inline citations.
 - **reproducible_agent.py**: Custom wrapper for OpenAI agent with temperature and seed support.
-- **__init__.py**: Exports all agents for clean imports (`from agents import PDFMinerAgent, ...`).
 
-### Core Files
-- **config.py**: Configuration file containing reproducibility parameters (temperature, seed, model).
-- **orchestrator.py**: Coordinates the workflow between all agents.
-- **main.py**: Command-line interface for running the full pipeline with logging.
-- **requirements.txt**: Lists all required Python packages.
-
-### Output Files
-- **mini_survey.txt**: Generated mini-survey output.
-- **mini_survey_config.json**: Configuration used for the run (gitignored).
-- **research_copilot.log**: Human-readable log file with run details and configuration (gitignored).
-- **trace.jsonl**: Structured JSONL trace of all workflow events for observability (gitignored).
-
-### Memory
-- **memory/ephemeral_memory_setup.py**: Sets up shared memory for agent communication.
-
-## Installation
-
-1. **Clone the repository** (if not already):
-	```sh
-	git clone <your-repo-url>
+```
+research_copilot/
+├── src/
+│   ├── __init__.py
+│   ├── main.py                # CLI entrypoint
+│   ├── config.py              # Configuration and reproducibility settings
+│   ├── orchestrator.py        # Orchestrates the multi-agent workflow
+│   ├── agents/                # All agent implementations
+│   ├── memory/                # Memory implementations
+│   └── utils/                 # Utility modules
+│
+├── docs/                     # All documentation (except README)
+│   ├── OBSERVABILITY.md
+│   ├── REPRODUCIBILITY.md
+│   ├── REPRODUCIBILITY_NOTES.md
+│   ├── REFACTORING_SUMMARY.md
+│   └── TEST_RESULTS.md
+│
+├── outputs/                  # Generated outputs (gitignored)
+│   ├── mini_survey.txt
+│   ├── run*.txt
+│   └── *_config.json
+│
+├── logs/                     # Log files (gitignored)
+│   ├── research_copilot.log
+│   ├── trace.jsonl
+│   └── trace_run*.jsonl
+│
+├── tests/                    # Unit and integration tests (future)
+│   └── __init__.py
+│
+├── requirements.txt
+├── README.md
+└── research_copilot.py       # Entry point script (run from root)
+```
 	cd research_copilot
 	```
 
@@ -69,16 +83,50 @@ All agent implementations are centralized in the `agents/` directory:
 
 	> **Note:** This project depends on the MOYA framework. Please clone or download the MOYA repository at the same directory level as this project (i.e., both `research_copilot` and `moya` should be in the same parent folder) before installing requirements.
 
+
+## Usage
+
+Run the CLI from the project root using the entry point script:
+
+```sh
+python research_copilot.py --topic "Artificial General Intelligence"
+```
+
+Or, to process your own PDFs:
+
+```sh
+python research_copilot.py --pdf-folder pdfs_downloaded/
+```
+
+**Options:**
+
+- `--topic <topic>`: Research topic to mine papers for (downloads from arXiv)
+- `--pdf-folder <folder>`: Folder containing PDF files to process
+- `--output <file>`: Output file for the mini-survey (default: outputs/mini_survey.txt)
+- `--openai-api-key <key>`: OpenAI API key (or set OPENAI_API_KEY env var)
+- `--temperature <float>`: LLM temperature for reproducibility (default: 0.0)
+- `--seed <int>`: Random seed for reproducibility (default: 42)
+- `--model <string>`: OpenAI model to use (default: gpt-4o)
+
+The generated mini-survey will be saved to the specified output file in the `outputs/` directory by default.
 	```sh
-	git clone https://github.com/montycloud/moya.git
-	# Ensure the folder structure is:
-	# parent_folder/
-	# ├── moya/
+
+### Output and Log Files
+- **outputs/mini_survey.txt**: Generated mini-survey output.
+- **outputs/mini_survey_config.json**: Configuration used for the run (gitignored).
+- **logs/research_copilot.log**: Human-readable log file with run details and configuration (gitignored).
+- **logs/trace.jsonl**: Structured JSONL trace of all workflow events for observability (gitignored).
 	# └── research_copilot/
 	```
 
 3. **(Recommended) Create and activate a virtual environment:**
 	```sh
+
+## Example
+
+```sh
+python research_copilot.py --topic "Sustainable AI"
+```
 	python3 -m venv .venv
 	source .venv/bin/activate
 	```

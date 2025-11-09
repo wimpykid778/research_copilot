@@ -3,7 +3,7 @@ SynthesizerAgent: Uses OpenAIAgent to synthesize insights and gaps across summar
 Stub for assignment structure.
 """
 
-from utils.trace_logger import get_trace_logger
+from src.utils.trace_logger import get_trace_logger
 
 class SynthesizerAgent:
     def __init__(self, openai_agent):

@@ -8,7 +8,7 @@ import os
 import requests
 from urllib.parse import urlencode
 from xml.etree import ElementTree
-from utils.trace_logger import get_trace_logger
+from src.utils.trace_logger import get_trace_logger
 
 class PDFMinerAgent:
     def __init__(self, topic, download_dir):

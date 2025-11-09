@@ -5,8 +5,8 @@ Stub for assignment structure.
 
 
 import os
-from memory.ephemeral_memory_setup import EphemeralMemory
-from utils.trace_logger import get_trace_logger
+from src.memory.ephemeral_memory_setup import EphemeralMemory
+from src.utils.trace_logger import get_trace_logger
 
 class ResearchCopilotOrchestrator:
     def __init__(self, pdf_miner, pdf_parser, summarizer, synthesizer, survey_writer):

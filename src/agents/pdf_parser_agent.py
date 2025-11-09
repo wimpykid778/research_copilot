@@ -5,7 +5,7 @@ Stub for assignment structure.
 
 
 import pdfplumber
-from utils.trace_logger import get_trace_logger
+from src.utils.trace_logger import get_trace_logger
 
 class PDFParserAgent:
     def __init__(self):

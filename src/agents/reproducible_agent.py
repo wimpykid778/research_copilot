@@ -3,7 +3,7 @@ Custom OpenAI Agent wrapper that supports temperature and seed for reproducibili
 """
 
 from moya.agents.openai_agent import OpenAIAgent, OpenAIAgentConfig
-from utils.trace_logger import get_trace_logger
+from src.utils.trace_logger import get_trace_logger
 
 
 class ReproducibleOpenAIAgent(OpenAIAgent):

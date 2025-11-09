@@ -8,7 +8,7 @@ import sys
 import logging
 import json
 from datetime import datetime
-from agents import (
+from src.agents import (
     PDFMinerAgent,
     PDFParserAgent,
     SummarizerAgent,
@@ -16,9 +16,9 @@ from agents import (
     SurveyWriterAgent,
     ReproducibleOpenAIAgent
 )
-from orchestrator import ResearchCopilotOrchestrator
-from utils.trace_logger import get_trace_logger
-import config
+from src.orchestrator import ResearchCopilotOrchestrator
+from src.utils.trace_logger import get_trace_logger
+from src import config
 
 from moya.agents.openai_agent import OpenAIAgentConfig
 
