@@ -1,0 +1,48 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# VS Code settings
+.vscode/
+
+# macOS system files
+.DS_Store
+
+# PDF downloads and outputs
+pdfs_downloaded/
+mini_survey.txt
+
+# Environment variables / secrets
+.env
+.env.*
+
+# Logs
+*.log
+
+# Test and coverage outputs
+htmlcov/
+.coverage
+.tox/
+.nox/
+.cache
+pytest_cache/
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+
+# Ignore MOYA local editable install if present
+moya.egg-info/
